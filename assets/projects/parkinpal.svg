@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <style>
+    .bg { fill: #D4D2CC; }
+    .baseline { stroke: #4A6670; stroke-opacity: 0.2; stroke-width: 1; }
+    .wave { stroke: #4A6670; stroke-width: 2.5; fill: none; }
+    .band { fill: #4A6670; fill-opacity: 0.12; }
+    .dot { fill: #4A6670; }
+    .label { fill: #5C5C5C; font-family: ui-monospace, monospace; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2E2D2A; }
+      .baseline, .wave { stroke: #7A9BA6; }
+      .band { fill: #7A9BA6; }
+      .dot { fill: #7A9BA6; }
+      .label { fill: #9A9894; }
+    }
+  </style>
+  <rect class="bg" width="400" height="240"/>
+  <rect class="band" x="32" y="88" width="336" height="64"/>
+  <line class="baseline" x1="32" y1="120" x2="368" y2="120"/>
+  <path class="wave" d="M32 120 C48 80 64 160 80 120 S112 80 128 120 S160 160 176 120 S208 80 224 120 S256 160 272 120 S304 80 320 120 S352 160 368 120"/>
+  <circle class="dot" cx="200" cy="120" r="5"/>
+  <text class="label" x="32" y="224">tremor 4-6 Hz / voice score</text>
+</svg>

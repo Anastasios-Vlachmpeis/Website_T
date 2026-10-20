@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A pre-registered World Cup model | Anastasios Vlachmpeis</title>
+  <meta name="description" content="A goal model for one World Cup 2026 match, walk-forward tested on 19,700 internationals, priced against the bookmaker and frozen in git before kickoff.">
+  <link rel="canonical" href="https://anastasios-vlachmpeis.github.io/research/world-cup/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://anastasios-vlachmpeis.github.io/research/world-cup/">
+  <meta property="og:title" content="Netherlands vs Sweden, World Cup 2026">
+  <meta property="og:description" content="Walk-forward RPS 0.179 against a 0.226 base rate, a quarter-Kelly bet, and the goal bias I caught before kickoff.">
+  <meta property="og:image" content="https://anastasios-vlachmpeis.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Anastasios Vlachmpeis, home"><span class="mark__name">Anastasios</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/#research" aria-current="true">Research</a></li>
+          <li><a href="/#software">Software</a></li>
+          <li><a href="/#record">Record</a></li>
+          <li><a href="#contact">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-head">
+      <div class="wrap grid">
+        <a class="back link-draw" href="/#research">All research</a>
+        <h1 style="view-transition-name: t-world-cup">Netherlands vs Sweden, World Cup&nbsp;2026</h1>
+        <p class="summary">A statistical model for one World Cup match, priced against the bookmaker and frozen in git before kickoff.</p>
+        <dl class="meta">
+          <div><dt>When</dt><dd>June 2026</dd></div>
+          <div><dt>Type</dt><dd>Solo project</dd></div>
+          <div><dt>Stack</dt><dd>Python, pandas, pytest</dd></div>
+          <div><dt>Links</dt><dd><a href="https://github.com/Anastasios-Vlachmpeis/Quantitative-Analysis-of-the-NL-SWE-world-cup-match">Code</a>, <a href="https://github.com/Anastasios-Vlachmpeis/Quantitative-Analysis-of-the-NL-SWE-world-cup-match/blob/main/reports/REPORT.md">report</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="figure" aria-label="Walk-forward results">
+      <div class="wrap">
+        <figure>
+          <div class="legend" aria-hidden="true"><span>Model, with 95% bootstrap interval</span><span style="--k: var(--muted)">Base-rate floor</span></div>
+          <ul class="dotplot" style="--min: 0.17; --max: 0.23; --n: 6" aria-describedby="wc-cap">
+            <li title="RPS 0.179, 95% CI 0.177 to 0.181"><span class="dp-lbl">Weighted ensemble</span><span class="dp-track"><span class="dp-ci" style="--lo: 0.177; --hi: 0.181"></span><span class="dp-dot" style="--v: 0.179"></span></span><span class="dp-val mono">0.179</span></li>
+            <li title="RPS 0.180, 95% CI 0.178 to 0.181"><span class="dp-lbl">Average ensemble</span><span class="dp-track"><span class="dp-ci" style="--lo: 0.178; --hi: 0.181"></span><span class="dp-dot" style="--v: 0.180"></span></span><span class="dp-val mono">0.180</span></li>
+            <li title="RPS 0.181, 95% CI 0.178 to 0.183"><span class="dp-lbl">Poisson</span><span class="dp-track"><span class="dp-ci" style="--lo: 0.178; --hi: 0.183"></span><span class="dp-dot" style="--v: 0.181"></span></span><span class="dp-val mono">0.181</span></li>
+            <li title="RPS 0.181, 95% CI 0.178 to 0.183"><span class="dp-lbl">Dixon-Coles</span><span class="dp-track"><span class="dp-ci" style="--lo: 0.178; --hi: 0.183"></span><span class="dp-dot" style="--v: 0.181"></span></span><span class="dp-val mono">0.181</span></li>
+            <li title="RPS 0.186, 95% CI 0.184 to 0.188"><span class="dp-lbl">Elo</span><span class="dp-track"><span class="dp-ci" style="--lo: 0.184; --hi: 0.188"></span><span class="dp-dot" style="--v: 0.186"></span></span><span class="dp-val mono">0.186</span></li>
+            <li class="is-ref" title="RPS 0.226, 95% CI 0.224 to 0.227"><span class="dp-lbl">Base rates</span><span class="dp-track"><span class="dp-ci" style="--lo: 0.224; --hi: 0.227"></span><span class="dp-dot" style="--v: 0.226"></span></span><span class="dp-val mono">0.226</span></li>
+            <li class="dp-axis" aria-hidden="true"><span></span><span class="dp-track"><span style="--v: 0.17">0.17</span><span style="--v: 0.19">0.19</span><span style="--v: 0.21">0.21</span><span style="--v: 0.23">0.23</span></span><span></span></li>
+          </ul>
+          <figcaption id="wc-cap">Walk-forward Ranked Probability Score on a common set of 19,500 international matches. Lower is better. The top four intervals overlap, so I treat those models as tied.</figcaption>
+          <details class="table">
+            <summary>Show as a table</summary>
+            <table>
+              <thead><tr><th scope="col">Model</th><th scope="col">RPS</th><th scope="col">95% CI</th></tr></thead>
+              <tbody>
+                <tr><td>Weighted ensemble</td><td>0.179</td><td>0.177 to 0.181</td></tr>
+                <tr><td>Average ensemble</td><td>0.180</td><td>0.178 to 0.181</td></tr>
+                <tr><td>Poisson</td><td>0.181</td><td>0.178 to 0.183</td></tr>
+                <tr><td>Dixon-Coles</td><td>0.181</td><td>0.178 to 0.183</td></tr>
+                <tr><td>Elo</td><td>0.186</td><td>0.184 to 0.188</td></tr>
+                <tr><td>Base rates</td><td>0.226</td><td>0.224 to 0.227</td></tr>
+              </tbody>
+            </table>
+          </details>
+        </figure>
+      </div>
+    </section>
+
+    <div class="case-body">
+      <div class="wrap grid">
+        <section aria-labelledby="q">
+          <h2 id="q">Question</h2>
+          <p>Can a transparent goal model price a single international match well enough to disagree with the market? And can I show afterwards that I did not move the goalposts once the result was in?</p>
+        </section>
+
+        <section aria-labelledby="m">
+          <h2 id="m">Method</h2>
+          <ul class="points">
+            <li>International results back to 2006, FIFA rankings, a self-computed Elo, and odds from two bookmaker sources.</li>
+            <li>Features use only information from before kickoff. I checked this by flipping match results and confirming the pre-match features did not change.</li>
+            <li>A ladder of models from a base-rate floor up to Poisson, Dixon-Coles, a Bayesian hierarchical model and ensembles. Every prediction is walk-forward: each match is predicted by a model trained only on earlier matches.</li>
+            <li>Scored with RPS and log-loss, with bootstrap confidence intervals, and the de-vigged bookmaker line run through the same scoring.</li>
+            <li>Stakes from expected value against de-vigged odds, sized at quarter-Kelly, with a bankroll Monte Carlo.</li>
+          </ul>
+        </section>
+
+        <dl class="stats" aria-label="The live bet">
+          <div><dt>Bet</dt><dd>NED win</dd></div>
+          <div><dt>Odds taken</dt><dd>1.74</dd></div>
+          <div><dt>Model</dt><dd>62.7%</dd></div>
+          <div><dt>Market, de-vigged</dt><dd>55.6%</dd></div>
+          <div><dt>Edge</dt><dd>+9.1%</dd></div>
+        </dl>
+        <p class="stats__note">Staked at quarter-Kelly and frozen before kickoff.</p>
+
+        <section aria-labelledby="f">
+          <h2 id="f">The freeze</h2>
+          <p>The prediction and the bet slip were committed and tagged <code class="mono">prematch-freeze</code> before kickoff. Everything written after the match is append-only on top of that tag. The tag ended up on commit <code class="mono">b399a33</code> instead of the planned <code class="mono">7273af0</code>, and the report says so.</p>
+        </section>
+
+        <section aria-labelledby="r">
+          <h2 id="r">Result</h2>
+          <p>The model is well calibrated and beats the base-rate floor over twenty years of matches. It does not beat the other structured models in any way I would defend: calling the ensemble best by 0.002 of RPS is noise.</p>
+          <p>It also has a measured flaw. It priced over 2.5 goals at 71% when the sharp market said about 56%, because the Poisson models carry lopsided qualifier scorelines into a tight match. Pricing against the market is how I caught it, so I cut totals from the live bet, apart from one small over 2.5 kept on purpose to watch the bias play out.</p>
+          <p>The match finished 5 to 1 and both bets won. That is the least informative fact on this page: one match cannot separate a good model from a lucky one.</p>
+        </section>
+
+        <section aria-labelledby="c">
+          <h2 id="c">What it cannot answer yet</h2>
+          <p>The goal models are trained and scored on internationals, while the staking and closing-line value are checked on club odds, because usable international closing odds barely exist. The two never mix. That keeps the evaluation honest, but model quality and betting mechanics are measured on different data. Whether it beats the market only has a live answer, and the ledger needs dozens of pre-registered bets before that answer means anything.</p>
+        </section>
+      </div>
+    </div>
+
+    <nav class="next" aria-label="Next project">
+      <div class="wrap">
+        <a class="sweep" href="/research/sam-reproduction/"><span class="mono muted">Next in research</span><strong>SAM reproduction</strong></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap grid">
+      <div class="contact">
+        <p>For internships or research supervision, email me.</p>
+        <a class="contact__mail sweep" href="mailto:tasos.vlahbeis@gmail.com">tasos.vlahbeis@gmail.com</a>
+      </div>
+      <ul class="footer__links">
+        <li><a class="link-draw" href="https://github.com/Anastasios-Vlachmpeis">GitHub</a></li>
+        <li><a class="link-draw" href="https://www.linkedin.com/in/anastasios-vlachmpeis/">LinkedIn</a></li>
+      </ul>
+      <p class="colophon">Set in Switzer and JetBrains Mono. No analytics, no cookies.</p>
+      <div class="footer__base mono">
+        <span>&copy; 2026 Anastasios Vlachmpeis, Maastricht</span>
+        <span>Updated 20 Oct 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

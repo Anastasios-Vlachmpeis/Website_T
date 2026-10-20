@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <style>
+    .bg { fill: #D4D2CC; }
+    .grid { stroke: #4A6670; stroke-opacity: 0.12; stroke-width: 0.5; }
+    .diag { stroke: #4A6670; stroke-opacity: 0.35; stroke-width: 1; }
+    .point { fill: #4A6670; }
+    .label { fill: #5C5C5C; font-family: ui-monospace, monospace; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2E2D2A; }
+      .grid { stroke: #7A9BA6; }
+      .diag { stroke: #7A9BA6; }
+      .point { fill: #7A9BA6; }
+      .label { fill: #9A9894; }
+    }
+  </style>
+  <rect class="bg" width="400" height="240"/>
+  <line class="grid" x1="80" y1="32" x2="80" y2="208"/>
+  <line class="grid" x1="140" y1="32" x2="140" y2="208"/>
+  <line class="grid" x1="200" y1="32" x2="200" y2="208"/>
+  <line class="grid" x1="260" y1="32" x2="260" y2="208"/>
+  <line class="grid" x1="320" y1="32" x2="320" y2="208"/>
+  <line class="grid" x1="48" y1="64" x2="352" y2="64"/>
+  <line class="grid" x1="48" y1="104" x2="352" y2="104"/>
+  <line class="grid" x1="48" y1="144" x2="352" y2="144"/>
+  <line class="grid" x1="48" y1="184" x2="352" y2="184"/>
+  <line class="diag" x1="48" y1="208" x2="352" y2="32"/>
+  <circle class="point" cx="120" cy="176" r="3" opacity="0.9"/>
+  <circle class="point" cx="160" cy="144" r="3" opacity="0.75"/>
+  <circle class="point" cx="200" cy="112" r="3" opacity="0.6"/>
+  <circle class="point" cx="240" cy="80" r="3" opacity="0.45"/>
+  <circle class="point" cx="280" cy="112" r="3" opacity="0.55"/>
+  <circle class="point" cx="200" cy="176" r="3" opacity="0.7"/>
+  <circle class="point" cx="240" cy="144" r="3" opacity="0.65"/>
+  <circle class="point" cx="160" cy="112" r="3" opacity="0.5"/>
+  <circle class="point" cx="280" cy="176" r="3" opacity="0.4"/>
+  <circle class="point" cx="320" cy="144" r="3" opacity="0.35"/>
+  <text class="label" x="48" y="224">recurrence plot / time-series</text>
+</svg>

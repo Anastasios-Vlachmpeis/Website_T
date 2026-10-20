@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <style>
+    .bg { fill: #D4D2CC; }
+    .pitch { fill: #4A6670; fill-opacity: 0.08; stroke: #4A6670; stroke-width: 1.5; }
+    .mid { stroke: #4A6670; stroke-opacity: 0.35; }
+    .zone { fill: #4A6670; fill-opacity: 0.18; stroke: #4A6670; stroke-width: 1; }
+    .zone2 { fill: #4A6670; fill-opacity: 0.10; stroke: #4A6670; stroke-width: 1; }
+    .num { fill: #4A6670; font-family: ui-monospace, monospace; font-size: 14px; font-weight: 600; }
+    .num2 { fill: #5C5C5C; font-family: ui-monospace, monospace; font-size: 14px; }
+    .label { fill: #5C5C5C; font-family: ui-monospace, monospace; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2E2D2A; }
+      .pitch { fill: #7A9BA6; stroke: #7A9BA6; }
+      .mid { stroke: #7A9BA6; }
+      .zone, .zone2 { fill: #7A9BA6; stroke: #7A9BA6; }
+      .num { fill: #7A9BA6; }
+      .num2, .label { fill: #9A9894; }
+    }
+  </style>
+  <rect class="bg" width="400" height="240"/>
+  <rect class="pitch" x="48" y="36" width="304" height="168" rx="0"/>
+  <line class="mid" x1="200" y1="36" x2="200" y2="204" stroke-width="1.5"/>
+  <circle class="zone" cx="148" cy="120" r="36"/>
+  <circle class="zone2" cx="252" cy="120" r="36"/>
+  <text class="num" x="128" y="126">0.627</text>
+  <text class="num2" x="236" y="126">0.556</text>
+  <text class="label" x="48" y="224">RPS 0.179 / NL vs SWE</text>
+</svg>

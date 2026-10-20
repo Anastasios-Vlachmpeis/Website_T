@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anastasios Vlachmpeis, data science and quant research</title>
+  <meta name="description" content="Second-year Data Science and AI student at Maastricht working toward quant research. Models scored against baselines, and a recurrence plot of AAPL.">
+  <link rel="canonical" href="https://anastasios-vlachmpeis.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anastasios-vlachmpeis.github.io/">
+  <meta property="og:title" content="Anastasios Vlachmpeis">
+  <meta property="og:description" content="Data Science and AI at Maastricht, working toward quant research. Models scored against baselines, and a recurrence plot of AAPL computed in your browser.">
+  <meta property="og:image" content="https://anastasios-vlachmpeis.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/switzer-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Anastasios Vlachmpeis","url":"https://anastasios-vlachmpeis.github.io/","email":"mailto:tasos.vlahbeis@gmail.com","affiliation":{"@type":"CollegeOrUniversity","name":"Maastricht University"},"knowsAbout":["Time-series analysis","Recurrence plots","Quantitative research","Machine learning"],"sameAs":["https://github.com/Anastasios-Vlachmpeis","https://www.linkedin.com/in/anastasios-vlachmpeis/"]}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Anastasios Vlachmpeis, home"><span class="mark__name">Anastasios</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#software">Software</a></li>
+          <li><a href="#record">Record</a></li>
+          <li><a href="#contact">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="name">
+      <div class="wrap grid">
+        <div class="hero__text">
+          <h1 id="name"><span>Anastasios</span> <span>Vlachmpeis</span></h1>
+          <p class="hero__lede">I study Data Science and AI at Maastricht and want to work in quant research. I build models and score them against the simplest baseline I can find.</p>
+        </div>
+        <dl class="facts">
+            <div><dt>Degree</dt><dd>BSc Data Science &amp; AI, year 2</dd></div>
+            <div><dt>GPA</dt><dd>8.08 out of 10</dd></div>
+            <div><dt>Research</dt><dd>MaRBLe honours, recurrence plots</dd></div>
+            <div><dt>Society</dt><dd>President, MQR</dd></div>
+        </dl>
+
+        <figure class="plot" aria-labelledby="plot-caption">
+          <div class="plot__frame">
+            <div class="plot__y" aria-hidden="true">
+              <span style="bottom:0%">2019</span>
+              <span style="bottom:48.46%">2020</span>
+              <span style="bottom:97.12%">2021</span>
+            </div>
+            <div class="plot__stage" data-rp tabindex="0" role="group" aria-roledescription="recurrence plot" aria-label="Recurrence plot of AAPL daily log returns, January 2019 to January 2021. Arrow keys move the cursor, Shift moves 20 days, Escape resumes the read head." aria-describedby="plot-caption">
+              <img class="plot__static" src="/assets/img/rp-returns.png" width="520" height="520" alt="Recurrence plot of AAPL log returns. Dark blocks fill the calm stretches of 2019; a pale cross runs through March 2020.">
+              <canvas class="plot__base" aria-hidden="true"></canvas>
+              <canvas class="plot__over" aria-hidden="true"></canvas>
+            </div>
+            <div class="plot__x" aria-hidden="true">
+              <span style="left:0%">2019</span>
+              <span style="left:48.46%">2020</span>
+              <span style="left:97.12%">2021</span>
+            </div>
+          </div>
+          <p class="readout" data-readout aria-hidden="true"><span>16 Mar 2020</span><span class="muted">close</span> <span>58.84</span><span class="muted">return</span> <span>&minus;13.77%</span></p>
+          <p class="visually-hidden" data-live aria-live="polite"></p>
+          <div class="controls">
+            <div class="seg" role="group" aria-label="State used for the plot">
+              <button type="button" class="sweep" data-mode="returns" aria-pressed="true">Returns</button>
+              <button type="button" class="sweep" data-mode="vol" aria-pressed="false">Volatility</button>
+              <button type="button" class="sweep" data-mode="price" aria-pressed="false">Price</button>
+            </div>
+            <label class="eps">
+              <span>Recurrence rate</span>
+              <input type="range" min="2" max="30" step="1" value="10" data-eps>
+              <output data-eps-out>10%</output>
+            </label>
+          </div>
+          <figcaption class="plot__caption" id="plot-caption">AAPL from 2 Jan 2019 to 25 Jan 2021, 520 trading days (plus 44 earlier closes that feed the 7- and 20-day windows), computed in your browser. A cell is dark when the market state on its two dates was within &epsilon; of each other. The pale cross through March 2020 is the crash: those weeks resembled nothing else in the window. Point at a cell or tap it to read both dates.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section work" id="research" aria-labelledby="research-h">
+      <div class="wrap">
+        <div class="work__head">
+          <h2 id="research-h">Research</h2>
+          <p>Each study is scored against the baseline it has to beat, including the one where the baseline wins.</p>
+        </div>
+        <ol class="work-list">
+          <li>
+            <div class="row row--static">
+              <span class="row__year mono muted">Jul 2026 to now</span>
+              <span class="row__title">Recurrence plots for financial time series</span>
+              <span class="row__desc">MaRBLe honours research, and the plot at the top of this page. A write-up follows once there are results.</span>
+              <span class="row__result mono">In progress</span>
+            </div>
+          </li>
+          <li>
+            <a class="row sweep" href="/research/player-information/">
+              <span class="row__year mono muted">2026</span>
+              <span class="row__title" style="view-transition-name: t-player">Player information in football prediction</span>
+              <span class="row__desc">Does the recent form of the announced starters improve 1X2 forecasts beyond closing odds? 7,801 matches in five leagues, one held-out season.</span>
+              <span class="row__result mono">Log loss 0.9580 vs 0.9567 market<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="row sweep" href="/research/world-cup/">
+              <span class="row__year mono muted">Jun 2026</span>
+              <span class="row__title" style="view-transition-name: t-world-cup">Netherlands vs Sweden, World Cup 2026</span>
+              <span class="row__desc">Walk-forward backtest on about 19,700 internationals. The bet was pre-registered and sized at quarter-Kelly.</span>
+              <span class="row__result mono">RPS 0.179 vs 0.226 base rate<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="row sweep" href="/research/sam-reproduction/">
+              <span class="row__year mono muted">Mar 2026</span>
+              <span class="row__title" style="view-transition-name: t-sam">SAM reproduction</span>
+              <span class="row__desc">Sharpness-aware minimization on ResNet-18, reimplemented in PyTorch on CIFAR-10 and CIFAR-100.</span>
+              <span class="row__result mono">78.57% vs 76.65% SGD, CIFAR-100<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section work" id="software" aria-labelledby="software-h">
+      <div class="wrap">
+        <div class="work__head">
+          <h2 id="software-h">Software</h2>
+          <p>Built at hackathons and for courses, mostly in teams. Rows marked GitHub open the repository.</p>
+        </div>
+        <h3 class="work-group">Hackathons</h3>
+        <ol class="work-list">
+          <li>
+            <a class="row sweep" href="/software/parkinpal/">
+              <span class="row__year mono muted">Feb 2026</span>
+              <span class="row__title" style="view-transition-name: t-parkinpal">ParkinPal</span>
+              <span class="row__desc">Tremor and voice tests for Parkinson's that run on a phone's own sensors.</span>
+              <span class="row__result mono">2nd, Cursor AI Hackathon Hamburg<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="row sweep" href="/software/hedgy/">
+              <span class="row__year mono muted">Jun 2026</span>
+              <span class="row__title" style="view-transition-name: t-hedgy">hedgY</span>
+              <span class="row__desc">Pairs a stock position with a Kalshi or Polymarket contract on the event that could sink it.</span>
+              <span class="row__result mono">Built in 30 hours, Paris Builds<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="row sweep" href="/software/soteria/">
+              <span class="row__year mono muted">Jun 2026</span>
+              <span class="row__title" style="view-transition-name: t-soteria">Soteria</span>
+              <span class="row__desc">Dispatch map for Hong Kong that ranks nearby trained volunteers by travel time and credentials, so one can reach an emergency before the ambulance.</span>
+              <span class="row__result mono">2nd, Smart City track, EuroTech &times; HKTE<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="row sweep" href="https://github.com/Anastasios-Vlachmpeis/Property-Flow-Pioneers-AI-Hackathon">
+              <span class="row__year mono muted">Nov 2025</span>
+              <span class="row__title">Property Flow <span class="row__ext mono muted">GitHub</span></span>
+              <span class="row__desc">Vacation-rental management with agents for pricing, calendar sync and guest messages across Airbnb, Booking.com and Vrbo.</span>
+              <span class="row__result mono">Top 10, Pioneers AI Hackathon<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+        </ol>
+        <h3 class="work-group">Other projects</h3>
+        <ol class="work-list">
+          <li>
+            <a class="row sweep" href="https://github.com/Anastasios-Vlachmpeis/ViewAndHired">
+              <span class="row__year mono muted">2026</span>
+              <span class="row__title">ViewAndHired <span class="row__ext mono muted">GitHub</span></span>
+              <span class="row__desc">Mock video interviews: questions generated from a job listing, then feedback on answers, speech and gaze, with transcription and face models running on the machine.</span>
+              <span class="row__result mono">FastAPI, Whisper, OpenVINO<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+          <li>
+            <a class="row sweep" href="https://github.com/Anastasios-Vlachmpeis/Crazy-Putting---a-mini-golf-game">
+              <span class="row__year mono muted">2026</span>
+              <span class="row__title">Crazy Putting <span class="row__ext mono muted">GitHub</span></span>
+              <span class="row__desc">Mini golf with a physics engine on Euler and Runge-Kutta ODE solvers, and bots that plan their own shots. Maastricht first-year project.</span>
+              <span class="row__result mono">Team of 5, Java and JavaFX<span class="row__arrow" aria-hidden="true">&#8599;</span></span>
+            </a>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section record" id="record" aria-labelledby="record-h">
+      <div class="wrap grid">
+        <h2 id="record-h">Record</h2>
+        <div class="record__groups">
+          <div class="record__group">
+            <h3>Background</h3>
+            <ul class="record__list">
+              <li><span class="date mono">2025 to 2028</span><span class="what">BSc Data Science &amp; AI, Maastricht University</span><span class="detail">GPA 8.08 out of 10.</span></li>
+              <li><span class="date mono">2026 to now</span><span class="what">President, MQR</span><span class="detail">Maastricht Quantitative Research, a student society.</span></li>
+              <li><span class="date mono">Sep 2025 to May 2026</span><span class="what">Apex Trader Funding</span><span class="detail">Passed the $100k evaluation, then traded a funded futures account.</span></li>
+              <li><span class="date mono">Before 2025</span><span class="what">Hotel operations, Naxos</span><span class="detail">Five years at a five-star hotel before university. Overbooking is a forecasting problem where the loss function is standing at the front desk.</span></li>
+            </ul>
+          </div>
+          <div class="record__group" id="competitions">
+            <h3>Competitions</h3>
+            <ul class="record__list">
+              <li><span class="date mono">Jun 2026</span><span class="what">EuroTech &times; HKTE Hackathon, Munich</span><span class="detail">2nd in the Smart City track with Soteria. Teams selected from 1,300+ applicants.</span></li>
+              <li><span class="date mono">Jun 2026</span><span class="what">Unaite Paris Builds</span><span class="detail">Built hedgY in 30 hours.</span></li>
+              <li><span class="date mono">Apr 2026</span><span class="what">IMC Prosperity 4</span><span class="detail">11th in the Netherlands, 248th of about 19,000 teams.</span></li>
+              <li><span class="date mono">Feb 2026</span><span class="what">Cursor AI Hackathon, Hamburg</span><span class="detail">2nd with ParkinPal, plus best use of Manus.</span></li>
+              <li><span class="date mono">Nov 2025</span><span class="what">Pioneers AI Hackathon</span><span class="detail">Top 10 finalist with Property Flow.</span></li>
+              <li><span class="date mono">Sep 2025</span><span class="what">Amsterdam Policy Hackathon</span><span class="detail">Top 10 finalist.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap grid">
+      <div class="contact">
+        <p>For internships or research supervision, email me.</p>
+        <a class="contact__mail sweep" href="mailto:tasos.vlahbeis@gmail.com">tasos.vlahbeis@gmail.com</a>
+      </div>
+      <ul class="footer__links">
+        <li><a class="link-draw" href="https://github.com/Anastasios-Vlachmpeis">GitHub</a></li>
+        <li><a class="link-draw" href="https://www.linkedin.com/in/anastasios-vlachmpeis/">LinkedIn</a></li>
+      </ul>
+      <p class="colophon">Set in Switzer and JetBrains Mono. The plot is computed in your browser from AAPL daily closes. No analytics, no cookies.</p>
+      <div class="footer__base mono">
+        <span>&copy; 2026 Anastasios Vlachmpeis, Maastricht</span>
+        <span>Updated 20 Oct 2026</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/aapl-data.js" defer></script>
+  <script src="/assets/js/rp.js" defer></script>
+</body>
+</html>

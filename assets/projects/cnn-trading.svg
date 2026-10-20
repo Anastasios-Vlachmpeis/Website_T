@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <style>
+    .bg { fill: #D4D2CC; }
+    .grid { stroke: #4A6670; stroke-opacity: 0.12; }
+    .cell { fill: #4A6670; stroke: #4A6670; }
+    .line { stroke: #4A6670; stroke-width: 2; fill: none; }
+    .label { fill: #5C5C5C; font-family: ui-monospace, monospace; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2E2D2A; }
+      .grid { stroke: #7A9BA6; stroke-opacity: 0.15; }
+      .cell { fill: #7A9BA6; stroke: #7A9BA6; }
+      .line { stroke: #7A9BA6; }
+      .label { fill: #9A9894; }
+    }
+  </style>
+  <rect class="bg" width="400" height="240"/>
+  <line class="grid" x1="0" y1="60" x2="400" y2="60"/>
+  <line class="grid" x1="0" y1="120" x2="400" y2="120"/>
+  <line class="grid" x1="0" y1="180" x2="400" y2="180"/>
+  <rect class="cell" x="28" y="28" width="44" height="44" fill-opacity="0.15" stroke-width="1"/>
+  <rect class="cell" x="80" y="28" width="44" height="44" fill-opacity="0.22" stroke-width="1"/>
+  <rect class="cell" x="132" y="28" width="44" height="44" fill-opacity="0.30" stroke-width="1"/>
+  <rect class="cell" x="184" y="28" width="44" height="44" fill-opacity="0.38" stroke-width="1"/>
+  <path class="line" d="M28 188 L72 148 L116 158 L160 118 L204 128 L248 92 L292 102 L336 78 L372 88"/>
+  <text class="label" x="28" y="224">CNN / ETF</text>
+</svg>

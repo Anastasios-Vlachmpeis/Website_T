@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Soteria, volunteer dispatch for Hong Kong | Anastasios Vlachmpeis</title>
+  <meta name="description" content="An operator dashboard that ranks nearby trained volunteers by walking route and credentials. 2nd in the Smart City track at the EuroTech x HKTE Hackathon, June 2026.">
+  <link rel="canonical" href="https://anastasios-vlachmpeis.github.io/software/soteria/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://anastasios-vlachmpeis.github.io/software/soteria/">
+  <meta property="og:title" content="Soteria">
+  <meta property="og:description" content="Community first-responder dispatch for Hong Kong. 2nd, Smart City track, EuroTech x HKTE Hackathon.">
+  <meta property="og:image" content="https://anastasios-vlachmpeis.github.io/assets/img/soteria.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Anastasios Vlachmpeis, home"><span class="mark__name">Anastasios</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/#research">Research</a></li>
+          <li><a href="/#software" aria-current="true">Software</a></li>
+          <li><a href="/#record">Record</a></li>
+          <li><a href="#contact">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-head">
+      <div class="wrap grid">
+        <a class="back link-draw" href="/#software">All software</a>
+        <h1 style="view-transition-name: t-soteria">Soteria</h1>
+        <p class="summary">A dispatch dashboard for Hong Kong that finds trained volunteers close enough to reach an emergency before the ambulance does, and lets the operator call them.</p>
+        <dl class="meta">
+          <div><dt>When</dt><dd>June 2026</dd></div>
+          <div><dt>Type</dt><dd>Team of 3, EuroTech &times; HKTE Hackathon, Munich</dd></div>
+          <div><dt>Stack</dt><dd>React, TypeScript, Mapbox, Express, Twilio</dd></div>
+          <div><dt>Links</dt><dd><a href="https://github.com/Anastasios-Vlachmpeis/Community-First-Responder-Dispatch-System">Code</a>, <a href="https://github.com/Anastasios-Vlachmpeis/Community-First-Responder-Dispatch-System/blob/main/HONESTY.md">what was mocked</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="figure" aria-label="Screenshot">
+      <div class="wrap">
+        <figure>
+          <img src="/assets/img/soteria.jpg" width="1600" height="847" alt="The Soteria operator dashboard at night: an assault incident in Kowloon on a 3D map, red rings marking the area, a police route and ETA of 6:47, and a ranked list of nearby volunteers on the right, each with walking time and a call button." fetchpriority="high">
+          <figcaption>The operator view for one incident. Police are 6:47 away by road; the top-ranked volunteer is about eight minutes away on foot, with his walking route drawn on the map.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="case-body">
+      <div class="wrap grid">
+
+        <section aria-labelledby="p">
+          <h2 id="p">Problem</h2>
+          <p>In a dense city, the first minutes after an emergency often decide the outcome, and an ambulance can be stuck in traffic while someone with first-aid training is a short walk away. Ambulance, police and fire services stay in charge. Soteria gives the operator a way to find those nearby people, judge whether they would actually arrive first, and contact them in a recorded workflow.</p>
+        </section>
+
+        <section aria-labelledby="m">
+          <h2 id="m">What I built</h2>
+          <p>The operator dashboard: the map, the incident and dispatch logic, the volunteer recommender and the routing. Teammates built the volunteer registration app and its SMS verification.</p>
+          <ul class="points">
+            <li>The recommender scores each volunteer as 70% proximity and 30% credential relevance to the incident type, and returns the top ten within 10 km.</li>
+            <li>Proximity is the walking route distance from the Mapbox Directions API, with a straight-line fallback. Emergency vehicles get driving routes, animated along the road with a live ETA.</li>
+            <li>Selecting an incident shows its type, address, caller and dispatched units next to the ranked volunteers, so the two arrival times can be compared on one screen.</li>
+            <li>The call flow runs from ringing to a recorded answer, and the operator marks each volunteer as helping or declined.</li>
+          </ul>
+        </section>
+
+        <p class="pull">The question on screen is not who is closest. It is who gets there before the ambulance.</p>
+
+        <section aria-labelledby="l">
+          <h2 id="l">What was mocked</h2>
+          <p>The hackathon required a disclosure file, and ours lists every shortcut. Incidents, vehicle positions and the pool of about 7,000 volunteers are generated, because there was no access to Hong Kong's real dispatch feed. Calls to volunteers are simulated, and the dashboard and the registration app are not yet connected. The routing, the scoring and the map run on real Mapbox data.</p>
+        </section>
+      </div>
+    </div>
+
+    <nav class="next" aria-label="Next project">
+      <div class="wrap">
+        <a class="sweep" href="/software/parkinpal/"><span class="mono muted">Back to the first project</span><strong>ParkinPal</strong></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap grid">
+      <div class="contact">
+        <p>For internships or research supervision, email me.</p>
+        <a class="contact__mail sweep" href="mailto:tasos.vlahbeis@gmail.com">tasos.vlahbeis@gmail.com</a>
+      </div>
+      <ul class="footer__links">
+        <li><a class="link-draw" href="https://github.com/Anastasios-Vlachmpeis">GitHub</a></li>
+        <li><a class="link-draw" href="https://www.linkedin.com/in/anastasios-vlachmpeis/">LinkedIn</a></li>
+      </ul>
+      <p class="colophon">Set in Switzer and JetBrains Mono. No analytics, no cookies.</p>
+      <div class="footer__base mono">
+        <span>&copy; 2026 Anastasios Vlachmpeis, Maastricht</span>
+        <span>Updated 20 Oct 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

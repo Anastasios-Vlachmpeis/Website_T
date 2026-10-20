@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reproducing sharpness-aware minimization (SAM) | Anastasios Vlachmpeis</title>
+  <meta name="description" content="A PyTorch reimplementation of SAM on ResNet-18. CIFAR-10 96.01% against 95.01% for SGD, CIFAR-100 78.57% against 76.65%, with a sweep over the radius rho.">
+  <link rel="canonical" href="https://anastasios-vlachmpeis.github.io/research/sam-reproduction/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://anastasios-vlachmpeis.github.io/research/sam-reproduction/">
+  <meta property="og:title" content="SAM reproduction">
+  <meta property="og:description" content="Sharpness-aware minimization reimplemented in PyTorch on CIFAR-10 and CIFAR-100, with an extended abstract.">
+  <meta property="og:image" content="https://anastasios-vlachmpeis.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Anastasios Vlachmpeis, home"><span class="mark__name">Anastasios</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/#research" aria-current="true">Research</a></li>
+          <li><a href="/#software">Software</a></li>
+          <li><a href="/#record">Record</a></li>
+          <li><a href="#contact">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-head">
+      <div class="wrap grid">
+        <a class="back link-draw" href="/#research">All research</a>
+        <h1 style="view-transition-name: t-sam">SAM reproduction</h1>
+        <p class="summary">A PyTorch reimplementation of sharpness-aware minimization (Foret et al., 2020) on ResNet-18, with a short sweep over the radius &rho;.</p>
+        <dl class="meta">
+          <div><dt>When</dt><dd>March 2026</dd></div>
+          <div><dt>Type</dt><dd>Solo, with an extended abstract</dd></div>
+          <div><dt>Stack</dt><dd>PyTorch, CUDA autocast</dd></div>
+          <div><dt>Links</dt><dd><a href="https://github.com/Anastasios-Vlachmpeis/SAM-Reproduction">Code</a>, <a href="https://github.com/Anastasios-Vlachmpeis/SAM-Reproduction/blob/main/SAM_Reproduction.pdf">abstract (PDF)</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="figure" aria-label="Best test accuracy">
+      <div class="wrap">
+        <figure>
+          <div class="legend" aria-hidden="true"><span>SAM</span><span style="--k: var(--muted)">SGD with momentum</span></div>
+          <div class="charts-2">
+            <div>
+              <p class="chart-title">CIFAR-10, best test accuracy</p>
+              <ul class="dotplot" style="--min: 94.5; --max: 96.5; --n: 4">
+                <li class="is-ref" title="SGD 95.01%, epoch 198"><span class="dp-lbl">SGD</span><span class="dp-track"><span class="dp-dot" style="--v: 95.01"></span></span><span class="dp-val mono">95.01%</span></li>
+                <li title="SAM rho 0.01: 95.15%, epoch 178"><span class="dp-lbl">SAM &rho; 0.01</span><span class="dp-track"><span class="dp-dot" style="--v: 95.15"></span></span><span class="dp-val mono">95.15%</span></li>
+                <li title="SAM rho 0.05: 96.01%, epoch 173"><span class="dp-lbl">SAM &rho; 0.05</span><span class="dp-track"><span class="dp-dot" style="--v: 96.01"></span></span><span class="dp-val mono">96.01%</span></li>
+                <li title="SAM rho 0.10: 95.49%, epoch 175"><span class="dp-lbl">SAM &rho; 0.10</span><span class="dp-track"><span class="dp-dot" style="--v: 95.49"></span></span><span class="dp-val mono">95.49%</span></li>
+                <li class="dp-axis" aria-hidden="true"><span></span><span class="dp-track"><span style="--v: 94.5">94.5%</span><span style="--v: 95.5">95.5%</span><span style="--v: 96.5">96.5%</span></span><span></span></li>
+              </ul>
+            </div>
+            <div>
+              <p class="chart-title">CIFAR-100, best test accuracy</p>
+              <ul class="dotplot" style="--min: 76; --max: 79; --n: 6">
+                <li class="is-ref" title="SGD 76.65%, epoch 196"><span class="dp-lbl">SGD</span><span class="dp-track"><span class="dp-dot" style="--v: 76.65"></span></span><span class="dp-val mono">76.65%</span></li>
+                <li title="SAM rho 0.01: 77.78%, epoch 194"><span class="dp-lbl">SAM &rho; 0.01</span><span class="dp-track"><span class="dp-dot" style="--v: 77.78"></span></span><span class="dp-val mono">77.78%</span></li>
+                <li title="SAM rho 0.05: 78.57%, epoch 175"><span class="dp-lbl">SAM &rho; 0.05</span><span class="dp-track"><span class="dp-dot" style="--v: 78.57"></span></span><span class="dp-val mono">78.57%</span></li>
+                <li title="SAM rho 0.10: 78.62%, epoch 180"><span class="dp-lbl">SAM &rho; 0.10</span><span class="dp-track"><span class="dp-dot" style="--v: 78.62"></span></span><span class="dp-val mono">78.62%</span></li>
+                <li class="dp-axis" aria-hidden="true"><span></span><span class="dp-track"><span style="--v: 76">76%</span><span style="--v: 77.5">77.5%</span><span style="--v: 79">79%</span></span><span></span></li>
+              </ul>
+            </div>
+          </div>
+          <figcaption>Best test accuracy over 200 epochs, one seed (42) per configuration, so the gaps have no error bars. Axes are cut to the range of the results.</figcaption>
+          <details class="table">
+            <summary>Show as a table</summary>
+            <table>
+              <thead><tr><th scope="col">Dataset</th><th scope="col">SGD</th><th scope="col">SAM &rho; 0.01</th><th scope="col">SAM &rho; 0.05</th><th scope="col">SAM &rho; 0.10</th></tr></thead>
+              <tbody>
+                <tr><td>CIFAR-10</td><td>95.01 (198)</td><td>95.15 (178)</td><td>96.01 (173)</td><td>95.49 (175)</td></tr>
+                <tr><td>CIFAR-100</td><td>76.65 (196)</td><td>77.78 (194)</td><td>78.57 (175)</td><td>78.62 (180)</td></tr>
+              </tbody>
+            </table>
+            <p class="muted" style="margin-top:8px">Best epoch in parentheses.</p>
+          </details>
+        </figure>
+      </div>
+    </section>
+
+    <div class="case-body">
+      <div class="wrap grid">
+        <section aria-labelledby="w">
+          <h2 id="w">What SAM does</h2>
+          <p>Some minima are sharp: the loss shoots up if the weights move a little, and those solutions tend to generalise worse. SAM looks for weights whose loss stays low across a whole &ell;<sub>2</sub> ball of radius &rho; around them. Each step takes two gradients, one at the current weights and one at a perturbed point on the &rho;-sphere, then applies an SGD-style update to the original weights.</p>
+        </section>
+
+        <section aria-labelledby="s">
+          <h2 id="s">Setup</h2>
+          <ul class="points">
+            <li>ResNet-18 adapted to 32&times;32 images: a 3&times;3 first convolution with stride 1 and no initial max-pool.</li>
+            <li>Random crop with padding 4, horizontal flip, standard CIFAR normalisation.</li>
+            <li>SGD with momentum 0.9, learning rate 0.1 cut by 10&times; at epochs 100 and 150, weight decay 5&times;10<sup>&minus;4</sup>, batch size 128, 200 epochs. SAM used the same inner settings.</li>
+            <li>Trained on an RTX 4080 laptop GPU with PyTorch 2.10.</li>
+          </ul>
+        </section>
+
+        <p class="pull">+1.00 points on CIFAR-10, +1.92 on CIFAR-100, both at &rho; = 0.05. <span class="mono">SAM vs SGD</span></p>
+
+        <section aria-labelledby="r">
+          <h2 id="r">Result</h2>
+          <p>SAM gave the higher best test accuracy on both datasets: 96.01% against 95.01% on CIFAR-10 and 78.57% against 76.65% on CIFAR-100. Changing &rho; did not change the story much. On CIFAR-100, &rho; = 0.10 edged ahead at 78.62%, close enough to 0.05 that one seed cannot rank them.</p>
+        </section>
+
+        <section aria-labelledby="d">
+          <h2 id="d">Details the paper leaves out</h2>
+          <ul class="points">
+            <li>Mixed precision. PyTorch's GradScaler allows one unscale per optimizer step, and SAM needs two backward passes, so SGD runs used GradScaler while SAM ran under autocast with no loss scaling.</li>
+            <li>Batch norm in the perturbed forward pass is not specified. I kept the model in training mode throughout, as most public implementations do.</li>
+            <li>Two CUDA crashes on long runs. After the first, every epoch saves a full checkpoint with optimizer and scheduler state, and a resume flag picks a run back up.</li>
+            <li>The first CIFAR-10 SGD and SAM runs used full FP32. The &rho; sweep and all CIFAR-100 runs used autocast. Within each comparison only the optimizer or &rho; changed, and the abstract states this.</li>
+          </ul>
+        </section>
+      </div>
+    </div>
+
+    <nav class="next" aria-label="Next project">
+      <div class="wrap">
+        <a class="sweep" href="/research/player-information/"><span class="mono muted">Back to the first paper</span><strong>Player information in football prediction</strong></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap grid">
+      <div class="contact">
+        <p>For internships or research supervision, email me.</p>
+        <a class="contact__mail sweep" href="mailto:tasos.vlahbeis@gmail.com">tasos.vlahbeis@gmail.com</a>
+      </div>
+      <ul class="footer__links">
+        <li><a class="link-draw" href="https://github.com/Anastasios-Vlachmpeis">GitHub</a></li>
+        <li><a class="link-draw" href="https://www.linkedin.com/in/anastasios-vlachmpeis/">LinkedIn</a></li>
+      </ul>
+      <p class="colophon">Set in Switzer and JetBrains Mono. No analytics, no cookies.</p>
+      <div class="footer__base mono">
+        <span>&copy; 2026 Anastasios Vlachmpeis, Maastricht</span>
+        <span>Updated 20 Oct 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

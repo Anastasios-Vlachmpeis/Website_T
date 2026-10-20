@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Player information in football prediction | Anastasios Vlachmpeis</title>
+  <meta name="description" content="Does starters' recent form improve 1X2 forecasts beyond closing odds? On 1,163 held-out matches, log loss was 0.9580 with player features and 0.9567 without.">
+  <link rel="canonical" href="https://anastasios-vlachmpeis.github.io/research/player-information/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://anastasios-vlachmpeis.github.io/research/player-information/">
+  <meta property="og:title" content="The incremental value of player information in football match prediction">
+  <meta property="og:description" content="A pre-fixed test of player-form features against a recalibrated closing market, on five leagues and one held-out season.">
+  <meta property="og:image" content="https://anastasios-vlachmpeis.github.io/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ScholarlyArticle","headline":"The Incremental Value of Player Information in Football Match Prediction","author":{"@type":"Person","name":"Anastasios Vlachmpeis"},"url":"https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7295578","publisher":{"@type":"Organization","name":"SSRN"}}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Anastasios Vlachmpeis, home"><span class="mark__name">Anastasios</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/#research" aria-current="true">Research</a></li>
+          <li><a href="/#software">Software</a></li>
+          <li><a href="/#record">Record</a></li>
+          <li><a href="#contact">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-head">
+      <div class="wrap grid">
+        <a class="back link-draw" href="/#research">All research</a>
+        <h1 style="view-transition-name: t-player">Player information in football prediction</h1>
+        <p class="summary">Does the recent form of the announced starters improve 1X2 predictions beyond the bookmaker's closing odds? On a season held out until the end, no.</p>
+        <dl class="meta">
+          <div><dt>When</dt><dd>2026</dd></div>
+          <div><dt>Type</dt><dd>Solo paper, SSRN preprint</dd></div>
+          <div><dt>Stack</dt><dd>Python, multinomial logit, LightGBM, Dixon-Coles</dd></div>
+          <div><dt>Links</dt><dd><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7295578">Paper on SSRN</a>, <a href="https://github.com/Anastasios-Vlachmpeis/Player-Features-to-1x2-odds">code</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="figure" aria-label="Held-out result">
+      <div class="wrap">
+        <figure>
+          <dl class="stats">
+            <div><dt>Held-out matches</dt><dd>1,163</dd></div>
+            <div><dt>Market only</dt><dd>0.9567</dd></div>
+            <div><dt>Plus player form</dt><dd>0.9580</dd></div>
+            <div><dt>Change</dt><dd>0.143% worse</dd></div>
+            <div><dt>95% interval</dt><dd>&minus;0.51 to +0.23%</dd></div>
+          </dl>
+          <p class="chart-title" style="margin-top: 32px">Change in log loss from adding player features, with paired 95% interval</p>
+          <ul class="dotplot" style="--min: -0.6; --max: 0.3; --n: 9">
+            <li title="Point estimate 0.143% worse; interval 0.511% worse to 0.234% better"><span class="dp-lbl">Plus player form</span><span class="dp-track"><span class="dp-zero" style="--v: 0"></span><span class="dp-ci" style="--lo: -0.511; --hi: 0.234"></span><span class="dp-dot" style="--v: -0.143"></span></span><span class="dp-val mono">&minus;0.143%</span></li>
+            <li class="dp-axis" aria-hidden="true"><span></span><span class="dp-track"><span style="--v: -0.6">0.6% worse</span><span style="--v: 0">0</span><span style="--v: 0.3">0.3% better</span></span><span></span></li>
+          </ul>
+          <figcaption>Equal-league log loss on the 2025/26 season, which no development decision saw. The interval comes from a paired match-week bootstrap and crosses zero, so the test cannot tell the two models apart.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="case-body">
+      <div class="wrap grid">
+        <section aria-labelledby="q">
+          <h2 id="q">Question</h2>
+          <p>Closing odds summarise what the market knows shortly before kickoff, line-ups included. Recent individual form could still carry something prices miss. The paper asks whether the recorded performance of each starter in earlier matches improves three-way outcome probabilities beyond a recalibrated closing market.</p>
+        </section>
+
+        <section aria-labelledby="b">
+          <h2 id="b">The baseline</h2>
+          <p>A model fitted on bookmaker probabilities can beat raw odds just by learning to recalibrate them, even if every football feature it receives is useless. So the comparison is not against the raw market. It is a pooled multinomial logistic model on recalibrated closing probabilities, against the same model with four recent player-performance features added. Nothing else differs.</p>
+        </section>
+
+        <section aria-labelledby="d">
+          <h2 id="d">Data</h2>
+          <ul class="points">
+            <li>7,801 eligible top-division matches from Belgium, the Netherlands, Portugal, Scotland and Turkey.</li>
+            <li>Greece was built and audited, then excluded: its first two seasons fail the declared starting-lineup coverage rule.</li>
+            <li>A match counts only with valid closing odds and exactly eleven identified starters per team. Every exclusion is recorded.</li>
+            <li>Player form uses only earlier appearances, and team histories update only from earlier matches in the same league.</li>
+          </ul>
+        </section>
+
+        <section aria-labelledby="f">
+          <h2 id="f">Fixed before the test</h2>
+          <p>Development used 6,638 matches from 2020/21 to 2024/25, with three expanding-window folds. Feature choices, model settings, the comparisons and the decision not to apply post-hoc calibration were all fixed before 2025/26 was opened. The final evaluator checks the settings and a checksum of the selected features before fitting, and refuses to overwrite an existing final result.</p>
+        </section>
+
+        <section aria-labelledby="r">
+          <h2 id="r">Result</h2>
+          <p>Log loss was 0.9580 with player features against 0.9567 for the recalibrated market, 0.143% worse, with a paired 95% interval from 0.511% worse to 0.234% better. Brier score and ranked probability score show the same pattern. Country-level effects were small, mixed and uncertain.</p>
+          <p>Historical frequencies, Dixon-Coles with and without player information, a logistic model without market inputs and LightGBM were run as further comparisons.</p>
+        </section>
+
+        <section aria-labelledby="m">
+          <h2 id="m">What it means</h2>
+          <p>These four summaries of recent form add no reliable value over strong closing odds. That is a claim about these features against this market, not about player information in general. It is also the reason the market-only model has to be the baseline: against a weaker one, the same features would have looked useful.</p>
+        </section>
+      </div>
+    </div>
+
+    <nav class="next" aria-label="Next project">
+      <div class="wrap">
+        <a class="sweep" href="/research/world-cup/"><span class="mono muted">Next in research</span><strong>Netherlands vs Sweden, World Cup 2026</strong></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap grid">
+      <div class="contact">
+        <p>For internships or research supervision, email me.</p>
+        <a class="contact__mail sweep" href="mailto:tasos.vlahbeis@gmail.com">tasos.vlahbeis@gmail.com</a>
+      </div>
+      <ul class="footer__links">
+        <li><a class="link-draw" href="https://github.com/Anastasios-Vlachmpeis">GitHub</a></li>
+        <li><a class="link-draw" href="https://www.linkedin.com/in/anastasios-vlachmpeis/">LinkedIn</a></li>
+      </ul>
+      <p class="colophon">Set in Switzer and JetBrains Mono. No analytics, no cookies.</p>
+      <div class="footer__base mono">
+        <span>&copy; 2026 Anastasios Vlachmpeis, Maastricht</span>
+        <span>Updated 20 Oct 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

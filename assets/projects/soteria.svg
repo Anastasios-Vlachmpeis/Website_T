@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <style>
+    .bg { fill: #D4D2CC; }
+    .grid { stroke: #4A6670; stroke-opacity: 0.15; stroke-width: 1; }
+    .route { stroke: #4A6670; stroke-opacity: 0.5; stroke-width: 1.5; fill: none; }
+    .incident { fill: #4A6670; }
+    .ally { fill: #4A6670; fill-opacity: 0.45; }
+    .ally-near { fill: #4A6670; fill-opacity: 0.85; }
+    .label { fill: #5C5C5C; font-family: ui-monospace, monospace; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2E2D2A; }
+      .grid, .route { stroke: #7A9BA6; }
+      .incident, .ally, .ally-near { fill: #7A9BA6; }
+      .label { fill: #9A9894; }
+    }
+  </style>
+  <rect class="bg" width="400" height="240"/>
+  <line class="grid" x1="48" y1="48" x2="48" y2="192"/>
+  <line class="grid" x1="48" y1="192" x2="352" y2="192"/>
+  <line class="grid" x1="136" y1="48" x2="136" y2="192"/>
+  <line class="grid" x1="224" y1="48" x2="224" y2="192"/>
+  <line class="grid" x1="312" y1="48" x2="312" y2="192"/>
+  <line class="grid" x1="48" y1="96" x2="352" y2="96"/>
+  <line class="grid" x1="48" y1="144" x2="352" y2="144"/>
+  <circle class="incident" cx="224" cy="112" r="10"/>
+  <circle class="ally-near" cx="176" cy="128" r="7"/>
+  <circle class="ally" cx="280" cy="152" r="6"/>
+  <circle class="ally" cx="160" cy="80" r="5"/>
+  <path class="route" d="M224 112 L176 128"/>
+  <path class="route" d="M224 112 L280 152"/>
+  <text class="label" x="48" y="224">dispatch map / Hong Kong</text>
+</svg>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hedgY, stocks hedged with prediction markets | Anastasios Vlachmpeis</title>
+  <meta name="description" content="A paper-trading app that pairs a stock position with a Kalshi or Polymarket contract on the event that could break it. Built in 30 hours at Paris Builds, June 2026.">
+  <link rel="canonical" href="https://anastasios-vlachmpeis.github.io/software/hedgy/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://anastasios-vlachmpeis.github.io/software/hedgy/">
+  <meta property="og:title" content="hedgY">
+  <meta property="og:description" content="An equity leg and a prediction-market hedge, placed and closed as one position. Built in 30 hours at Paris Builds.">
+  <meta property="og:image" content="https://anastasios-vlachmpeis.github.io/assets/img/hedgy.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Anastasios Vlachmpeis, home"><span class="mark__name">Anastasios</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/#research">Research</a></li>
+          <li><a href="/#software" aria-current="true">Software</a></li>
+          <li><a href="/#record">Record</a></li>
+          <li><a href="#contact">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-head">
+      <div class="wrap grid">
+        <a class="back link-draw" href="/#software">All software</a>
+        <h1 style="view-transition-name: t-hedgy">hedgY</h1>
+        <p class="summary">A paper-trading app that pairs a stock position with a prediction-market contract on the event that could break it, and places both as one position.</p>
+        <dl class="meta">
+          <div><dt>When</dt><dd>June 2026</dd></div>
+          <div><dt>Type</dt><dd>Team, 30 hours at Unaite Paris Builds</dd></div>
+          <div><dt>Stack</dt><dd>Python, FastAPI, SQLite, Next.js</dd></div>
+          <div><dt>Links</dt><dd><a href="https://parishack-web.vercel.app/">Live demo</a>, <a href="https://github.com/Anastasios-Vlachmpeis/hedgY">code</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="figure" aria-label="Screenshot">
+      <div class="wrap">
+        <figure>
+          <img src="/assets/img/hedgy.jpg" width="1024" height="541" alt="The hedgY dashboard: a one-year Palantir price chart with a Trade button, and a column of correlated prediction markets on the right, each with Yes and No prices and a Hedge button." fetchpriority="high">
+          <figcaption>The hedge builder. Pick a stock and the right column lists the prediction markets matched to it, each one a click from becoming the hedge leg.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="case-body">
+      <div class="wrap grid">
+        <section aria-labelledby="p">
+          <h2 id="p">Problem</h2>
+          <p>Someone long a defence stock is exposed to an election they cannot easily hedge. That risk is priced on a prediction market, which means a separate account, separate funding, odds quoted differently and no tool to size the offset against the stock.</p>
+        </section>
+
+        <section aria-labelledby="b">
+          <h2 id="b">What was built</h2>
+          <ul class="points">
+            <li>Kalshi and Polymarket markets pulled into one schema and deduplicated across venues with a clustering matcher, showing the best Yes and No price per market.</li>
+            <li>A template library that maps an equity thesis to a hedge: defence and elections, pharma and FDA decisions, shipping and the Strait of Hormuz, rate-sensitive stocks and the Fed.</li>
+            <li>Combined orders: the equity leg and the prediction leg share a group id, so they are marked and closed together at the live price.</li>
+            <li>A SQLite paper ledger that starts at $1,000, with Alpaca prices streamed to the dashboard over server-sent events.</li>
+          </ul>
+        </section>
+
+        <p class="pull">Stocks and real-world outcomes trade on different venues. The product is the position that spans both.</p>
+
+        <section aria-labelledby="l">
+          <h2 id="l">Limits</h2>
+          <p>Paper trading only. Stock orders go to Alpaca's paper API, prediction fills happen inside the app against live aggregated odds, and nothing holds real money. The hedge pairings come from hand-written templates, so the app suggests hedges for the themes it knows and nothing outside them.</p>
+        </section>
+      </div>
+    </div>
+
+    <nav class="next" aria-label="Next project">
+      <div class="wrap">
+        <a class="sweep" href="/software/soteria/"><span class="mono muted">Next in software</span><strong>Soteria</strong></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap grid">
+      <div class="contact">
+        <p>For internships or research supervision, email me.</p>
+        <a class="contact__mail sweep" href="mailto:tasos.vlahbeis@gmail.com">tasos.vlahbeis@gmail.com</a>
+      </div>
+      <ul class="footer__links">
+        <li><a class="link-draw" href="https://github.com/Anastasios-Vlachmpeis">GitHub</a></li>
+        <li><a class="link-draw" href="https://www.linkedin.com/in/anastasios-vlachmpeis/">LinkedIn</a></li>
+      </ul>
+      <p class="colophon">Set in Switzer and JetBrains Mono. No analytics, no cookies.</p>
+      <div class="footer__base mono">
+        <span>&copy; 2026 Anastasios Vlachmpeis, Maastricht</span>
+        <span>Updated 20 Oct 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

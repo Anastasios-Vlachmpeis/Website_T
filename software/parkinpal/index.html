@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ParkinPal, tremor and voice tests on a phone | Anastasios Vlachmpeis</title>
+  <meta name="description" content="A phone web app that measures hand tremor and voice changes for people with Parkinson's. 2nd place at the Cursor AI Hackathon Hamburg, February 2026.">
+  <link rel="canonical" href="https://anastasios-vlachmpeis.github.io/software/parkinpal/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://anastasios-vlachmpeis.github.io/software/parkinpal/">
+  <meta property="og:title" content="ParkinPal">
+  <meta property="og:description" content="Accelerometer tremor and voice tests in the browser, with a weekly summary for a doctor. 2nd at Cursor AI Hackathon Hamburg.">
+  <meta property="og:image" content="https://anastasios-vlachmpeis.github.io/assets/img/parkinpal.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/switzer-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="mark" href="/" aria-label="Anastasios Vlachmpeis, home"><span class="mark__name">Anastasios</span></a>
+      <nav class="nav" aria-label="Main">
+        <ul>
+          <li><a href="/#research">Research</a></li>
+          <li><a href="/#software" aria-current="true">Software</a></li>
+          <li><a href="/#record">Record</a></li>
+          <li><a href="#contact">Email</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <header class="case-head">
+      <div class="wrap grid">
+        <a class="back link-draw" href="/#software">All software</a>
+        <h1 style="view-transition-name: t-parkinpal">ParkinPal</h1>
+        <p class="summary">A phone web app that measures hand tremor and voice changes for people with Parkinson's, and turns a week of tests into a summary for a doctor visit.</p>
+        <dl class="meta">
+          <div><dt>When</dt><dd>February 2026</dd></div>
+          <div><dt>Type</dt><dd>Team, Cursor AI Hackathon Hamburg, 2nd place</dd></div>
+          <div><dt>Stack</dt><dd>JavaScript, Web Audio, DeviceMotion, Vercel</dd></div>
+          <div><dt>Links</dt><dd><a href="https://parkin-pal.vercel.app">Live app</a>, <a href="https://youtu.be/SE0sY7ZQ39I">demo video</a>, <a href="https://github.com/nickdatak/ParkinPal">code</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="figure" aria-label="Demo">
+      <div class="wrap">
+        <figure>
+          <a class="media-link" href="https://youtu.be/SE0sY7ZQ39I">
+            <img src="/assets/img/parkinpal.jpg" width="1280" height="720" alt="A person reads the test phrase aloud into a phone; beside them, the app's voice test screen shows the phrase, the words it heard and a countdown." fetchpriority="high">
+            <span class="media-link__label">Watch the demo on YouTube</span>
+          </a>
+          <figcaption>From the hackathon demo. The voice test asks for one fixed sentence, transcribes it live and counts the words it recognised.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <div class="case-body">
+      <div class="wrap grid">
+        <section aria-labelledby="t">
+          <h2 id="t">Tremor test</h2>
+          <p>Thirty seconds of accelerometer data from the phone's DeviceMotion API, high-pass filtered, then checked for energy in the 4 to 6 Hz band typical of Parkinsonian tremor. The result is a score from 0 to 10 and a severity band.</p>
+        </section>
+
+        <section aria-labelledby="v">
+          <h2 id="v">Voice test</h2>
+          <p>A seven-second recording of a fixed sentence through the Web Audio API. The app measures speaking time, pauses of 0.3 s or longer and volume variance, and scores them from 0 to 10. If speech recognition hears fewer than 7 of the 9 words, it asks for a retake rather than scoring a bad recording.</p>
+        </section>
+
+        <p class="pull">Raw audio and motion never leave the phone. Only aggregated scores go to the model that drafts the report.</p>
+
+        <section aria-labelledby="d">
+          <h2 id="d">Data and the report</h2>
+          <p>Every entry lives in the browser's local storage. For the doctor report, the app sends seven days of daily scores, averages, ranges, standard deviation, trend and the correlation between tremor and voice to a language model through a serverless proxy, and shows a template summary if the model is unavailable.</p>
+        </section>
+
+        <section aria-labelledby="l">
+          <h2 id="l">Limits</h2>
+          <p>DeviceMotion needs HTTPS and a tap to grant permission on iOS, and speech recognition varies by browser. The scores are hackathon heuristics built in a weekend. They track change for one person over time; they are not a clinical measure.</p>
+        </section>
+      </div>
+    </div>
+
+    <nav class="next" aria-label="Next project">
+      <div class="wrap">
+        <a class="sweep" href="/software/hedgy/"><span class="mono muted">Next in software</span><strong>hedgY</strong></a>
+      </div>
+    </nav>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap grid">
+      <div class="contact">
+        <p>For internships or research supervision, email me.</p>
+        <a class="contact__mail sweep" href="mailto:tasos.vlahbeis@gmail.com">tasos.vlahbeis@gmail.com</a>
+      </div>
+      <ul class="footer__links">
+        <li><a class="link-draw" href="https://github.com/Anastasios-Vlachmpeis">GitHub</a></li>
+        <li><a class="link-draw" href="https://www.linkedin.com/in/anastasios-vlachmpeis/">LinkedIn</a></li>
+      </ul>
+      <p class="colophon">Set in Switzer and JetBrains Mono. No analytics, no cookies.</p>
+      <div class="footer__base mono">
+        <span>&copy; 2026 Anastasios Vlachmpeis, Maastricht</span>
+        <span>Updated 20 Oct 2026</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

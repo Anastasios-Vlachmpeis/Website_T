@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <style>
+    .bg { fill: #D4D2CC; }
+    .axis { stroke: #4A6670; stroke-opacity: 0.25; stroke-width: 1; }
+    .zero { stroke: #4A6670; stroke-opacity: 0.4; stroke-width: 1; stroke-dasharray: 6 4; }
+    .actual { stroke: #4A6670; stroke-opacity: 0.45; stroke-width: 2; fill: none; }
+    .pred { stroke: #4A6670; stroke-width: 2.5; fill: none; }
+    .bar { fill: #4A6670; fill-opacity: 0.2; }
+    .label { fill: #5C5C5C; font-family: ui-monospace, monospace; font-size: 11px; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #2E2D2A; }
+      .axis, .zero, .actual, .pred { stroke: #7A9BA6; }
+      .bar { fill: #7A9BA6; }
+      .label { fill: #9A9894; }
+    }
+  </style>
+  <rect class="bg" width="400" height="240"/>
+  <line class="axis" x1="32" y1="32" x2="32" y2="200"/>
+  <line class="axis" x1="32" y1="200" x2="368" y2="200"/>
+  <line class="zero" x1="32" y1="120" x2="368" y2="120"/>
+  <rect class="bar" x="48" y="140" width="8" height="40"/>
+  <rect class="bar" x="64" y="100" width="8" height="80"/>
+  <rect class="bar" x="80" y="130" width="8" height="50"/>
+  <rect class="bar" x="96" y="90" width="8" height="90"/>
+  <path class="actual" d="M48 130 L80 110 L112 125 L144 95 L176 105 L208 85 L240 95 L272 75 L304 88 L336 80"/>
+  <path class="pred" d="M48 125 L80 115 L112 118 L144 108 L176 112 L208 102 L240 108 L272 98 L304 104 L336 100"/>
+  <text class="label" x="32" y="224">AAPL log return / LSTM</text>
+</svg>
